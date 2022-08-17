@@ -1,0 +1,33 @@
+---
+- name: installing httpd, opening port 80, startind and enabling, adding a user 
+  hosts: webservers
+  become: true
+
+  tasks:
+
+  - name: installing httpd
+    yum: 
+      name: "{{ httpd_package_name }}"
+      state: latest 
+
+  - name: opening port 80
+    firewalld:
+      zone: public
+      service: http
+      permanent: yes
+      state: enabled 
+      immediate: yes      
+  
+  - name: Start service httpd, if not started
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+  
+  - name: create a user
+    user:
+      name: ansible 
+      group: wheel
+      password: "{{ passwordx }}"
+
+      

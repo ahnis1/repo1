@@ -1,0 +1,5 @@
+  - name: create a user
+    user:
+      name: ansible 
+      group: wheel
+      password: "{{ passwordx }}"

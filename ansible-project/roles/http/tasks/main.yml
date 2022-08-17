@@ -1,0 +1,10 @@
+  - name: installing httpd 
+    yum: 
+      name: "{{ httpd_package_name }}"
+      state: latest 
+
+  - name: Start service httpd, if not started
+    service:
+      name: "{{ httpd_package_name }}"
+      state: started
+      enabled: yes

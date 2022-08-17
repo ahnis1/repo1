@@ -1,0 +1,7 @@
+  - name: opening port 80
+    firewalld:
+      zone: public
+      service: http
+      permanent: yes
+      state: enabled 
+      immediate: yes   
